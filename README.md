@@ -1,3 +1,5 @@
+<img width="991" height="696" alt="image" src="https://github.com/user-attachments/assets/be5572fd-835e-47af-b416-861f5eacdaf3" />
+
 # Reply Dude - Reddit Promotion Service!
 
 A service that finds relevant Reddit threads and comments to help promote your website. Built with Express.js and Reddit JSON endpoint scraping (no API authentication required).
