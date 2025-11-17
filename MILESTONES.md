@@ -18,12 +18,12 @@ This document outlines the tasks and requirements needed to reach three major mi
   - [ ] Select platform based on cost, ease of deployment, and scalability
   - [ ] Set up production environment
 
-- [ ] **Deploy backend API**
-  - [ ] Configure production environment variables
+- [x] **Deploy backend API**
+  - [x] Configure production environment variables
   - [ ] Set up production database (if needed for user data)
-  - [ ] Deploy Express.js server
+  - [x] Deploy Express.js server
   - [ ] Configure custom domain (optional but recommended)
-  - [ ] Set up SSL/HTTPS certificates
+  - [x] Set up SSL/HTTPS certificates (automatic with Azure App Service)
 
 - [ ] **Deploy frontend**
   - [ ] Build production-optimized frontend bundle
@@ -32,19 +32,19 @@ This document outlines the tasks and requirements needed to reach three major mi
   - [ ] Set up custom domain
   - [ ] Configure CORS properly for production
 
-- [ ] **Environment configuration**
-  - [ ] Create `.env.example` template file
-  - [ ] Document all required environment variables
-  - [ ] Set up production `.env` securely
-  - [ ] Ensure no secrets in codebase
+- [x] **Environment configuration**
+  - [x] Create `.env.example` template file (ENV_EXAMPLE.md)
+  - [x] Document all required environment variables
+  - [x] Set up production `.env` securely (via Azure Portal)
+  - [x] Ensure no secrets in codebase
 
 ### Security & Reliability
 
-- [ ] **Security hardening**
-  - [ ] Add rate limiting to API endpoints
+- [x] **Security hardening**
+  - [x] Add rate limiting to API endpoints
   - [ ] Implement request validation and sanitization
-  - [ ] Add CORS configuration
-  - [ ] Set up security headers (helmet.js or similar)
+  - [x] Add CORS configuration
+  - [x] Set up security headers (helmet.js or similar)
   - [ ] Review and fix any security vulnerabilities
   - [ ] Add input validation on all endpoints
 

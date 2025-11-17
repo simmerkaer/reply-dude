@@ -1,5 +1,8 @@
-import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
+import express from "express";
+import rateLimit from "express-rate-limit";
+import helmet from "helmet";
 import redditRoutes from "./routes/redditRoutes.js";
 
 // Load environment variables
@@ -7,6 +10,27 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Security middleware
+app.use(helmet());
+
+// CORS configuration
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || "*", // Allow all origins in development, restrict in production
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: "Too many requests from this IP, please try again later.",
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use("/api/", limiter);
 
 // Middleware
 app.use(express.json());
@@ -98,7 +122,10 @@ app.use((req, res) => {
 // Error handler
 app.use((err, req, res, next) => {
   const timestamp = new Date().toISOString();
-  console.error(`[${timestamp}] ERROR ${req.method} ${req.originalUrl}:`, err.message);
+  console.error(
+    `[${timestamp}] ERROR ${req.method} ${req.originalUrl}:`,
+    err.message
+  );
   if (process.env.NODE_ENV === "development") {
     console.error(err.stack);
   }
