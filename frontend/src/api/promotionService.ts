@@ -1,4 +1,5 @@
-const API_BASE = '/api/reddit';
+// Use environment variable for production, fallback to relative path for development
+const API_BASE = import.meta.env.VITE_API_URL || '/api/reddit';
 
 export interface PromotionOpportunity {
   id: string;
